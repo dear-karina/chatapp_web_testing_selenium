@@ -14,6 +14,7 @@ def initialize_driver():
     chrome_options.add_argument("start-maximized")
     chrome_options.add_argument("enable-automation")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--remote-debugging-port=9222")
     chrome_options.binary_location = '/usr/bin/google-chrome'
 
     return webdriver.Chrome(options=chrome_options)
