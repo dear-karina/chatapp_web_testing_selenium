@@ -7,6 +7,7 @@ case "$1" in
         cd /home/ubuntu/repo/ChatApp_Web_Testing
         source .venv/bin/activate
         python3 main.py
+        deactivate
         ;;
     "update")
         # update the automation code
@@ -14,7 +15,8 @@ case "$1" in
         cd /home/ubuntu/repo/ChatApp_Web_Testing
         git pull
         source .venv/bin/activate
-        pip3 install -r requirements.txt
+        .venv/bin/pip3 install -r requirements.txt
+        deactivate
         echo "TestMachine2 finished updating"
         ;;
     "connect")
