@@ -16,7 +16,7 @@ def initialize_driver():
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.binary_location = '/usr/bin/google-chrome'
 
-    return webdriver.Chrome(executable_path='/usr/bin/chromedriver', chrome_options=chrome_options)
+    return webdriver.Chrome(options=chrome_options)
 
 
 def login(driver, username, password):
