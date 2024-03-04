@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 def initialize_driver():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--no-sandbox")
@@ -17,8 +16,11 @@ def initialize_driver():
     chrome_options.add_argument("--remote-debugging-port=9222")
     chrome_options.binary_location = '/usr/bin/google-chrome'
 
-    return webdriver.Chrome(options=chrome_options)
+    # Add the additional option for timeout
+    desired_timeout = 60  # Set to 60 seconds for example, you can adjust as needed
+    chrome_options.add_argument(f"--timeout={desired_timeout * 1000}")
 
+    return webdriver.Chrome(options=chrome_options)
 
 def login(driver, username, password):
     try:
@@ -46,7 +48,6 @@ def login(driver, username, password):
 
     finally:
         driver.quit()
-
 
 if __name__ == "__main__":
     driver = initialize_driver()
