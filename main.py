@@ -2,10 +2,23 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+
+options = Options()
+options.add_argument("--headless")
+options.add_argument("window-size=1400,1500")
+options.add_argument("--disable-gpu")
+options.add_argument("--no-sandbox")
+options.add_argument("start-maximized")
+options.add_argument("enable-automation")
+options.add_argument("--disable-infobars")
+options.add_argument("--disable-dev-shm-usage")
+
+driver = webdriver.Chrome(options=options)
+
 
 def login_successful(username, password):
     # Instantiate a browser driver (in this case, Chrome)
-    driver = webdriver.Chrome()
     try:
         # Maximize the window
         driver.maximize_window()
@@ -35,16 +48,17 @@ def login_successful(username, password):
             return True
 
         except AssertionError:
-            print(f"Logout button not found after successful login with username '{username}' and password '{password}'. Test Failed.")
+            print(
+                f"Logout button not found after successful login with username '{username}' and password '{password}'. Test Failed.")
             return False
 
     finally:
         # Quit the browser
         driver.quit()
 
+
 def login_fail(username, password):
     # Instantiate a browser driver (in this case, Chrome)
-    driver = webdriver.Chrome()
     try:
         # Maximize the window
         driver.maximize_window()
@@ -67,7 +81,8 @@ def login_fail(username, password):
             WebDriverWait(driver, 5).until(
                 EC.presence_of_element_located((By.XPATH, "//*[@id='root']/div[1]/div/section/button"))
             )
-            print(f"Unexpectedly found logout button after login failed with username '{username}' and password '{password}'. Test Failed.")
+            print(
+                f"Unexpectedly found logout button after login failed with username '{username}' and password '{password}'. Test Failed.")
             return False
 
         except:
@@ -77,6 +92,7 @@ def login_fail(username, password):
     finally:
         # Quit the browser
         driver.quit()
+
 
 if __name__ == "__main__":
     # Positive case: correct username and password
