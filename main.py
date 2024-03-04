@@ -16,15 +16,13 @@ def initialize_driver():
     chrome_options.add_argument("--remote-debugging-port=9222")
     chrome_options.binary_location = '/usr/bin/google-chrome'
 
-    # Add the additional option for timeout
-    desired_timeout = 60  # Set to 60 seconds for example, you can adjust as needed
-    chrome_options.add_argument(f"--timeout={desired_timeout * 1000}")
-
     return webdriver.Chrome(options=chrome_options)
 
 def login(driver, username, password):
     try:
         driver.maximize_window()
+        driver.set_page_load_timeout(60)  # Set page load timeout to 60 seconds
+        driver.implicitly_wait(10)  # Set implicit wait to 10 seconds
         driver.get("https://chatapp.hongduccodedao.io.vn/login")
         username_box = driver.find_element(By.ID, "username")
         username_box.send_keys(username)
@@ -33,7 +31,7 @@ def login(driver, username, password):
         login_button = driver.find_element(By.XPATH, "//button[text()='Login']")
         login_button.click()
 
-        logout_button = WebDriverWait(driver, 5).until(
+        logout_button = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//*[@id='root']/div[1]/div/section/button"))
         )
 
