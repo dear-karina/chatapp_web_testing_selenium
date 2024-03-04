@@ -13,6 +13,7 @@ case "$1" in
         echo "TestMachine2 is updating the tests...."
         cd /home/ubuntu/repo/ChatApp_Web_Testing
         git pull
+        source .venv/bin/activate
         pip3 install -r requirements.txt
         echo "TestMachine2 finished updating"
         ;;
