@@ -17,5 +17,4 @@ def initialize_driver():
     driver_path = r'/usr/local/bin/chromedriver'
     service = Service(driver_path)
     cdriver = webdriver.Chrome(options=options, service=service)
-    cdriver = webdriver.Chrome(options=options)
     return cdriver
