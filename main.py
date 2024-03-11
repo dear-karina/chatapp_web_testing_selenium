@@ -1,60 +1,15 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import unittest
+from test_cases.test_login import LoginTestCase
 
-def initialize_driver():
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-infobars")
-    chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("start-maximized")
-    chrome_options.add_argument("enable-automation")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--remote-debugging-port=9222")
-    chrome_options.binary_location = '/usr/bin/google-chrome'
 
-    return webdriver.Chrome(options=chrome_options)
+def run_test():
+    test_suite = unittest.TestSuite()
 
-def login(driver, username, password):
-    try:
-        driver.maximize_window()
-        driver.set_page_load_timeout(60)  # Set page load timeout to 60 seconds
-        driver.implicitly_wait(10)  # Set implicit wait to 10 seconds
-        driver.get("https://chatapp.hongduccodedao.io.vn/login")
-        username_box = driver.find_element(By.ID, "username")
-        username_box.send_keys(username)
-        password_box = driver.find_element(By.ID, "password")
-        password_box.send_keys(password)
-        login_button = driver.find_element(By.XPATH, "//button[text()='Login']")
-        login_button.click()
+    login_test_case = unittest.TestLoader().loadTestsFromTestCase(LoginTestCase)
+    test_suite.addTest(login_test_case)
 
-        logout_button = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//*[@id='root']/div[1]/div/section/button"))
-        )
+    unittest.TextTestRunner().run(test_suite)
 
-        assert logout_button is not None
-        print(f"Login successful with username '{username}' and password '{password}'.")
-        return True
-
-    except Exception as e:
-        print(f"Error: {e}")
-        print(f"Login failed with username '{username}' and password '{password}'.")
-        return False
-
-    finally:
-        driver.quit()
 
 if __name__ == "__main__":
-    driver = initialize_driver()
-
-    # Positive case: correct username and password
-    login(driver, "hongducdev", "123456")
-
-    # Negative case: Incorrect password
-    login(driver, "hongducdev", "incorrectpassword")
-
-    # Negative case: Username not existed
-    login(driver, "nonexistentusername", "123456")
+    run_test()
