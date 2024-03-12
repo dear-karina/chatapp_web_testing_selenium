@@ -30,8 +30,8 @@ def initialize_driver(driver: str):
         options.add_argument("--remote-debugging-port=9222")
 
         # Set the path to the Firefox binary if necessary
-        # firefox_binary_path = r'/path/to/firefox/binary'
-        # options.binary_location = firefox_binary_path
+        firefox_binary_path = r'/usr/bin/firefox'
+        options.binary_location = firefox_binary_path
 
         # Specify the path to the geckodriver executable
         driver_path = r'/usr/local/bin/geckodriver'
