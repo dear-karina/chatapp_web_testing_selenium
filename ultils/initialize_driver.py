@@ -35,14 +35,14 @@ def initialize_driver(driver: str):
         options.binary_location = firefox_binary_path
 
         # Specify the path to the geckodriver executable
-        # driver_path = r'/usr/local/bin/geckodriver'
+        driver_path = r'/usr/local/bin/geckodriver'
 
         # Create a service object for geckodriver
-        # service = Service(driver_path)
+        service = Service(driver_path)
 
         # Initialize the Firefox driver with the specified options and service
-        # driver = webdriver.Firefox(options=options, service=service)
-        driver = webdriver.Firefox(options=options)
+        driver = webdriver.Firefox(options=options, service=service)
+        # driver = webdriver.Firefox(options=options)
         return driver
     else:
         print("Unsupported driver")
