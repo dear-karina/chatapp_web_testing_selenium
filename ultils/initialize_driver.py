@@ -29,9 +29,7 @@ def initialize_driver(driver: str):
         options.add_argument("--enable-automation")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--remote-debugging-port=9222")
-        cap = DesiredCapabilities().FIREFOX
-        cap["marionette"] = False
-        options.capabilities = cap
+        options.set_capability("marionette", False)
         # Set the path to the Firefox binary if necessary
         firefox_binary_path = r'/usr/bin/firefox'
         options.binary_location = firefox_binary_path
@@ -40,7 +38,7 @@ def initialize_driver(driver: str):
         # driver_path = r'/usr/local/bin/geckodriver'
 
         # Create a service object for geckodriver
-        service = Service(driver_path)
+        # service = Service(driver_path)
 
         # Initialize the Firefox driver with the specified options and service
         # driver = webdriver.Firefox(options=options, service=service)
