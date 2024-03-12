@@ -13,11 +13,11 @@ def initialize_driver(driver: str):
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--remote-debugging-port=9222")
 
-        # chrome_binary_path = r'/usr/local/bin/chrome-linux64/chrome'
-        # options.binary_location = chrome_binary_path
-        # driver_path = r'/usr/local/bin/chromedriver'
-        # service = Service(driver_path)
-        # cdriver = webdriver.Chrome(options=options, service=service)
+        chrome_binary_path = r'/usr/local/bin/chrome-linux64/chrome'
+        options.binary_location = chrome_binary_path
+        driver_path = r'/usr/local/bin/chromedriver'
+        service = Service(driver_path)
+        cdriver = webdriver.Chrome(options=options, service=service)
         cdriver = webdriver.Chrome(options=options)
         return cdriver
     elif driver.lower() == "firefox":
