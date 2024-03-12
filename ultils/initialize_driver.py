@@ -22,6 +22,7 @@ def initialize_driver(driver: str):
         # cdriver = webdriver.Chrome(options=options)
         return cdriver
     elif driver.lower() == "firefox":
+        # this is for firefox driver set up
         options = Options()
         options.add_argument("--no-sandbox")
         options.add_argument("--headless")
