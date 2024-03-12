@@ -23,13 +23,13 @@ def initialize_driver(driver: str):
         return cdriver
     elif driver.lower() == "firefox":
         options = Options()
-        options.headless = True  # Enable headless mode
         options.add_argument("--no-sandbox")
+        options.add_argument("--headless")
         options.add_argument("--disable-gpu")
         options.add_argument("--enable-automation")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--remote-debugging-port=9222")
-        options.set_capability("marionette", False)
+
         # Set the path to the Firefox binary if necessary
         firefox_binary_path = r'/usr/bin/firefox'
         options.binary_location = firefox_binary_path
@@ -42,7 +42,7 @@ def initialize_driver(driver: str):
 
         # Initialize the Firefox driver with the specified options and service
         driver = webdriver.Firefox(options=options, service=service)
-        # driver = webdriver.Firefox(options=options)
+
         return driver
     else:
         print("Unsupported driver")
