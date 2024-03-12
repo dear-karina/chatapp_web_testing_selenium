@@ -1,5 +1,5 @@
 import unittest
-from test_cases.test_login import LoginTestCase
+from test_cases.test_case_login import LoginTestCase
 
 
 def run_test():
