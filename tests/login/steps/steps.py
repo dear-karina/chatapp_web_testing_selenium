@@ -35,4 +35,4 @@ def step_verify_login(context):
 
 @then('I should not be logged in')
 def step_verify_not_logged_in(context):
-    assert not context.logged_in, "Expected to see an error message, logged in unsuccessfully"
+    assert not context.logged_in, "Expected to see an error message, but logged in successfully"

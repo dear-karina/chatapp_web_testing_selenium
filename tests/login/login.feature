@@ -1,12 +1,13 @@
+Feature: login on chrome
 
-Feature: login on firefox
   Background:
-    Given I open the firefox browser
+    Given I open the chrome browser
 
-  Scenario Outline: Login with correct credentials
+  Scenario: Login with correct credentials
     Given I open the login page
     When I enter the correct username "hongducdev" and password "123456"
     Then I should be logged in successfully
+    
   Scenario: Login with incorrect password
     Given I open the login page
     When I enter the correct username "hongducdev" and incorrect password "incorrectpassword"

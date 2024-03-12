@@ -1,10 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-def initialize_driver(driver: str):
+def initialize_driver(driver: str = "chrome"):
     if driver.lower() == "chrome":
         options = Options()
         options.add_argument("--no-sandbox")
@@ -18,8 +17,8 @@ def initialize_driver(driver: str):
         options.binary_location = chrome_binary_path
         driver_path = r'/usr/local/bin/chromedriver'
         service = Service(driver_path)
-        cdriver = webdriver.Chrome(options=options, service=service)
-        # cdriver = webdriver.Chrome(options=options)
+        # cdriver = webdriver.Chrome(options=options, service=service)
+        cdriver = webdriver.Chrome(options=options)
         return cdriver
     elif driver.lower() == "firefox":
         options = Options()
