@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 def initialize_driver(driver: str):
@@ -28,20 +29,22 @@ def initialize_driver(driver: str):
         options.add_argument("--enable-automation")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--remote-debugging-port=9222")
-
+        cap = DesiredCapabilities().FIREFOX
+        cap["marionette"] = False
+        options.capabilities = cap
         # Set the path to the Firefox binary if necessary
         firefox_binary_path = r'/usr/bin/firefox'
         options.binary_location = firefox_binary_path
 
         # Specify the path to the geckodriver executable
-        driver_path = r'/usr/local/bin/geckodriver'
+        # driver_path = r'/usr/local/bin/geckodriver'
 
         # Create a service object for geckodriver
         service = Service(driver_path)
 
         # Initialize the Firefox driver with the specified options and service
-        driver = webdriver.Firefox(options=options, service=service)
-
+        # driver = webdriver.Firefox(options=options, service=service)
+        driver = webdriver.Firefox(options=options)
         return driver
     else:
         print("Unsupported driver")
