@@ -1,15 +1,4 @@
-import unittest
-from test_cases.test_case_login import LoginTestCase
-
-
-def run_test():
-    test_suite = unittest.TestSuite()
-
-    login_test_case = unittest.TestLoader().loadTestsFromTestCase(LoginTestCase)
-    test_suite.addTest(login_test_case)
-
-    unittest.TextTestRunner().run(test_suite)
-
+from behave.__main__ import main as behave_main
 
 if __name__ == "__main__":
-    run_test()
+    behave_main(["tests/login"])
