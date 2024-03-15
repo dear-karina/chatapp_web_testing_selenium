@@ -1,0 +1,53 @@
+<testsuite name="login.login on chrome" tests="2" errors="0" failures="2" skipped="0" time="4.543119"
+           timestamp="2024-03-15T17:22:34.076969" hostname="manticminotaur">
+    <testcase classname="login.login on chrome" name="Login with incorrect password" status="failed" time="2.869957">
+        <failure type="AssertionError"
+                 message="Expected error message: Incorrect password. Actual error message: Failed to fetch">
+            <![CDATA[
+Failing step: And I should see the message "Incorrect password" ... failed in 0.000s
+Location: tests/login/login.feature:17
+Assertion Failed: Expected error message: Incorrect password. Actual error message: Failed to fetch]]>
+        </failure>
+        <system-out>
+            <![CDATA[
+@scenario.begin
+
+  @negative-case
+  Scenario: Login with incorrect password
+    Given I open the chrome browser ... passed in 1.343s
+    Given I open the login page ... passed in 0.513s
+    When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" ... passed in 1.014s
+    Then I should not be logged in ... passed in 0.000s
+    And I should see the message "Incorrect password" ... failed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="login.login on chrome" name="Login with nonexistent username" status="failed" time="1.673162">
+        <failure type="AssertionError"
+                 message="Expected error message: Nonexistent username. Actual error message: Failed to fetch">
+            <![CDATA[
+Failing step: And I should see the message "Nonexistent username" ... failed in 0.000s
+Location: tests/login/login.feature:24
+Assertion Failed: Expected error message: Nonexistent username. Actual error message: Failed to fetch]]>
+        </failure>
+        <system-out>
+            <![CDATA[
+@scenario.begin
+
+  @negative-case
+  Scenario: Login with nonexistent username
+    Given I open the chrome browser ... passed in 0.224s
+    Given I open the login page ... passed in 0.440s
+    When I enter a nonexistent username "nonexistentusername" and password "123456" ... passed in 1.009s
+    Then I should not be logged in ... passed in 0.000s
+    And I should see the message "Nonexistent username" ... failed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+        </system-out>
+    </testcase>
+</testsuite>
