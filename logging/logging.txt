@@ -1,0 +1,35 @@
+Feature: login on chrome # tests/login/login.feature:1
+
+  Background:   # tests/login/login.feature:3
+
+  @positive-case
+  Scenario: Login with correct credentials                               # tests/login/login.feature:7
+    Given I open the chrome browser                                      # None
+    Given I open the login page                                          # None
+    When I enter the correct username "hongducdev" and password "123456" # None
+    Then I should be logged in successfully                              # None
+
+  @negative-case
+  Scenario: Login with incorrect password                                                     # tests/login/login.feature:13
+    Given I open the chrome browser                                                           # tests/login/steps/background_steps.py:5
+    Given I open the login page                                                               # tests/login/steps/steps.py:7
+    When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" # tests/login/steps/steps.py:19
+    Then I should not be logged in                                                            # tests/login/steps/steps.py:36
+    And I should see the message "Incorrect password"                                         # tests/login/steps/steps.py:41
+      Assertion Failed: Message None was found
+      Captured stdout:
+      Error:
+
+
+  @negative-case
+  Scenario: Login with nonexistent username                                         # tests/login/login.feature:20
+    Given I open the chrome browser                                                 # tests/login/steps/background_steps.py:5
+    Given I open the login page                                                     # tests/login/steps/steps.py:7
+    When I enter a nonexistent username "nonexistentusername" and password "123456" # tests/login/steps/steps.py:25
+    Then I should not be logged in                                                  # tests/login/steps/steps.py:36
+    And I should see the message "Nonexistent username"                             # tests/login/steps/steps.py:41
+      Assertion Failed: Message None was found
+      Captured stdout:
+      Error:
+
+
