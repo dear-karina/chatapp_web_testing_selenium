@@ -3,13 +3,13 @@ Feature: login on chrome
   Background:
     Given I open the chrome browser
 
-  @positive-case
+  @positive-case @must-passed
   Scenario: Login with correct credentials
     Given I open the login page
     When I enter the correct username "hongducdev" and password "123456"
     Then I should be logged in successfully
 
-  @negative-case
+  @negative-case @must-passed
   Scenario: Login with incorrect password
     Given I open the login page
     When I enter the correct username "hongducdev" and incorrect password "incorrectpassword"
