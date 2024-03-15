@@ -14,20 +14,21 @@ class ResultSummary:
     def get_result_summary(cls, data_str: str):
         patterns = {
             'time': r'Took (\S+)s',
-            'failing_scenarios': r'Failing scenarios:\n(.*?)(?:\n\n|$)',
+            'failed_scenario_names': r'Failing scenarios:\n(.*?)(?:\n\n|$)',
             'summary': r'(\d+) scenarios passed, (\d+) failed, (\d+) skipped'
         }
-
         results = {}
         for key, pattern in patterns.items():
             match = re.search(pattern, data_str, re.DOTALL)
             if match:
                 if key == 'time':
                     results[key] = match.group(1)
+
                 elif key == 'failed_scenario_names':
                     failing_scenarios_text = match.group(1)
                     failing_scenarios = re.findall(r'\s+(\S+)\s+(.*?)\n', failing_scenarios_text)
                     results[key] = [scenario[1] for scenario in failing_scenarios]
+
                 elif key == 'summary':
                     results['passed_scenarios'] = int(match.group(1))
                     results['failed_scenarios'] = int(match.group(2))
@@ -36,7 +37,7 @@ class ResultSummary:
         return cls(**results)
 
     def calculate_total(self):
-        total_scenarios = self.passed_scenarios + self.failed_scenarios + self.skipped_scenarios
+        total_scenarios = self.passed_scenarios + self.failed_scenarios
         return total_scenarios
 
     def calculate_percentage(self):
@@ -51,6 +52,6 @@ class ResultSummary:
 
     def decide_overall(self):
         if self.calculate_percentage() >= 80:
-            return "ACCEPTED"
+            return "ACCEPTABLE"
         else:
-            return "NOT ACCEPTED"
+            return "UNACCEPTABLE"

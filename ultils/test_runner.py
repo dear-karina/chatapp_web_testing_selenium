@@ -7,15 +7,25 @@ class TestRunner:
     def run():
         # run function: login
         # run must-pass
-        login_suite = TestSuite("login", "tests/login")
-        login_must_passed_result = login_suite.execute_by_tags('--tags="@must-passed"')
+        login_suite = TestSuite(
+            "login", "../tests/login")
+        login_must_passed_result = login_suite.execute_by_tags(
+            '--tags=@must-passed')
         print("Must-passed: ")
         print(login_must_passed_result)
+
         # run remaining
-        login_remaining_result = login_suite.execute_by_tags('--tags="not @must-passed"')
+        login_remaining_result = login_suite.execute_by_tags(
+            '--tags=~@must-passed')
         print("Total: ")
-        login_result = ResultSummary(
-            passed_scenarios=login_must_passed_result.passed_scenarios + login_remaining_result.passed_scenarios)
+
+        total_passed_scenarios = (
+                login_must_passed_result.passed_scenarios +
+                login_remaining_result.passed_scenarios
+        )
+
+        login_result = ResultSummary(passed_scenarios=total_passed_scenarios,
+                                     failed_scenarios=login_must_passed_result.calculate_total() + login_remaining_result.calculate_total())
         print(login_result)
         print("Overall result:")
         print(login_result.decide_overall())
@@ -27,8 +37,10 @@ class TestSuite:
         self.feature_dir = feature_dir
 
     def execute_by_tags(self, tags_option: str):
-        command = ["behave", tags_option, "--junit", "--no-skipped", self.feature_dir]
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        command = ["behave", tags_option, "--junit",
+                   "--no-skipped", self.feature_dir]
+        process = subprocess.Popen(
+            command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, _ = process.communicate()
         output_str = output.decode('utf-8')
 
