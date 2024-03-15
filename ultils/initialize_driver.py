@@ -17,8 +17,8 @@ def initialize_driver(driver: str = "chrome"):
         options.binary_location = chrome_binary_path
         driver_path = r'/usr/local/bin/chromedriver'
         service = Service(driver_path)
-        cdriver = webdriver.Chrome(options=options, service=service)
-        # cdriver = webdriver.Chrome(options=options)
+        # cdriver = webdriver.Chrome(options=options, service=service)
+        cdriver = webdriver.Chrome(options=options)
         return cdriver
     elif driver.lower() == "firefox":
         options = Options()

@@ -26,12 +26,14 @@ def login(driver: WebDriver, username, password):
         assert logout_button is not None
         print(
             f"Login successful with username '{username}' and password '{password}'.")
-        # take_screenshot(
-        #     driver, "tests/login/sceenshots/login_successfully.png")
+        take_screenshot(
+            driver, "tests/login/sceenshots/login_successfully.png")
         return True
 
     except Exception as e:
         print(f"Error: {e.msg if hasattr(e, 'msg') else e}")
+        take_screenshot(
+            driver, "tests/login/sceenshots/login_failed.png")
         print(
             f"Login failed with username '{username}' and password '{password}'.")
         return False

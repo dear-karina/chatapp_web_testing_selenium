@@ -7,7 +7,7 @@ from scripts.script_open_url import open_url
 @given('I open the login page')
 def step_open_login_page(context):
     context.driver = open_url(
-        context.driver, "https://chatapp.hongduccodedao.io.vn/login")
+        context.driver, "https://chatapppreview.hongduccodedao.io.vn/login")
 
 
 @when('I enter the correct username "{username}" and password "{password}"')
