@@ -1,41 +1,62 @@
+import logging
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from ultils.take_screenshot import take_screenshot
 
 
-def login(driver: WebDriver, username, password):
-    try:
-        username_box = driver.find_element(By.ID, "username")
-        assert username_box is not None
-        username_box.send_keys(username)
-        password_box = driver.find_element(By.ID, "password")
-        assert password_box is not None
-        password_box.send_keys(password)
-        login_button = driver.find_element(
-            By.XPATH, "//button[text()='Login']")
+class LoginScript:
+    def __init__(self, driver: WebDriver, url):
+        self.driver = driver
+        self.url = url
+        self.logger = logging.getLogger(__name__)
+        self.wait = WebDriverWait(self.driver, 5)
+        self.driver.get(self.url)
 
-        login_button.click()
-        assert login_button is not None
-        logout_button = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located(
-                (By.XPATH, "//*[@id='root']/div[1]/div/section/button"))
-        )
+    def login_positive(self, username, password):
+        try:
+            username_box = self.wait.until(EC.presence_of_element_located((By.ID, "username")))
+            username_box.send_keys(username)
 
-        assert logout_button is not None
-        print(
-            f"Login successful with username '{username}' and password '{password}'.")
-        take_screenshot(
-            driver, "tests/login/screenshots/login_successfully.png")
-        return True
+            password_box = self.wait.until(EC.presence_of_element_located((By.ID, "password")))
+            password_box.send_keys(password)
 
-    except Exception as e:
-        print(f"Error: {e.msg if hasattr(e, 'msg') else e}")
-        take_screenshot(
-            driver, "tests/login/screenshots/login_failed.png")
-        print(
-            f"Login failed with username '{username}' and password '{password}'.")
-        return False
-    finally:
-        driver.quit()
+            login_button = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//button[text()='Login']")))
+            login_button.click()
+
+            self.wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='root']/div[1]/div/section/button")))
+            return {"is_login_succeed": True}
+        except TimeoutException:
+            self.logger.error("Timeout occurred while waiting for element")
+            return {"is_login_succeed": False, "error_message": "Timeout occurred"}
+        except NoSuchElementException as e:
+            self.logger.error(f"Element not found: {e}")
+            return {"is_login_succeed": False, "error_message": "Element not found"}
+
+    def login_negative(self, username, password):
+        try:
+            username_box = self.wait.until(EC.presence_of_element_located((By.ID, "username")))
+            username_box.send_keys(username)
+
+            password_box = self.wait.until(EC.presence_of_element_located((By.ID, "password")))
+            password_box.send_keys(password)
+
+            login_button = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//button[text()='Login']")))
+            login_button.click()
+
+            status_element = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[role='status']")))
+            error_message = status_element.text
+            return {"is_login_succeed": False, "error_message": error_message}
+        except TimeoutException:
+            self.logger.error("Timeout occurred while waiting for element")
+            return {"is_login_succeed": False, "error_message": "Timeout occurred"}
+        except NoSuchElementException as e:
+            self.logger.error(f"Element not found: {e}")
+            return {"is_login_succeed": False, "error_message": "Element not found"}
+        finally:
+            self.driver.quit()
+
+    def take_screenshot(self, filename):
+        take_screenshot(self.driver, filename)
