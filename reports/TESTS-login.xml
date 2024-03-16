@@ -1,20 +1,19 @@
-<testsuite name="login.login on chrome" tests="1" errors="0" failures="1" skipped="0" time="6.256914" timestamp="2024-03-16T01:08:09.409076" hostname="manticminotaur"><testcase classname="login.login on chrome" name="Login with correct credentials" status="failed" time="6.256914"><failure type="AssertionError" message="Login was not successful">
+<testsuite name="login.login on chrome" tests="1" errors="0" failures="1" skipped="0" time="1.722901" timestamp="2024-03-16T21:01:23.438140" hostname="manticminotaur"><testcase classname="login.login on chrome" name="Login with nonexistent username" status="failed" time="1.722901"><failure type="AssertionError" message="Expected error message: Nonexistent username. Actual error message: Failed to fetch">
 <![CDATA[
-Failing step: Then I should be logged in successfully ... failed in 0.000s
-Location: tests/login/login.feature:10
-Assertion Failed: Login was not successful
-Captured logging:
-ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
+Failing step: And I should see the message "Nonexistent username" ... failed in 0.000s
+Location: ../tests/login.feature:24
+Assertion Failed: Expected error message: Nonexistent username. Actual error message: Failed to fetch]]>
 </failure><system-out>
 <![CDATA[
 @scenario.begin
 
-  @positive-case
-  Scenario: Login with correct credentials
-    Given I open the chrome browser ... passed in 0.255s
-    Given I open the login page ... passed in 0.432s
-    When I enter the correct username "hongducdev" and password "123456" ... passed in 5.570s
-    Then I should be logged in successfully ... failed in 0.000s
+  @negative-case
+  Scenario: Login with nonexistent username
+    Given I open the chrome browser ... passed in 0.227s
+    Given I open the login page ... passed in 0.491s
+    When I enter a nonexistent username "nonexistentusername" and password "123456" ... passed in 1.004s
+    Then I should not be logged in ... passed in 0.000s
+    And I should see the message "Nonexistent username" ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

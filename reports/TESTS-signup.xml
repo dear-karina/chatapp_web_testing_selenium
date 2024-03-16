@@ -1,0 +1,21 @@
+<testsuite name="signup.signup on chrome" tests="1" errors="0" failures="1" skipped="0" time="0.223136" timestamp="2024-03-16T21:01:23.720348" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with existed username" status="failed" time="0.223136"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given I open the signup page ... undefined in 0.000s
+Location: ../tests/signup.feature:21
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @negative-case
+  Scenario: Signup with existed username
+    Given I open the chrome browser ... passed in 0.223s
+    Given I open the signup page ... undefined in 0.000s
+    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... undefined in 0.000s
+    Then I should not be logged in ... skipped in 0.000s
+    And I should see the message "Existed username" ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
