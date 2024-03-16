@@ -47,7 +47,7 @@ class ResultSummary:
             return 0
 
     def __str__(self):
-        output = f'Passed case(s): {self.passed_scenarios}/{self.calculate_total()} => {self.calculate_percentage()}%'
+        output = f'{self.passed_scenarios}/{self.calculate_total()} case(s) passed => {self.calculate_percentage()}%'
         return output
 
     def decide_overall(self):
