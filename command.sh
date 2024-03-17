@@ -7,7 +7,7 @@ case "$1" in
         cd /home/ubuntu/repo/ChatApp_Web_Testing
         source .venv/bin/activate
         python3 main.py
-        deactivate
+        python3 reports/flask_run.py
         ;;
     "update")
         # update the automation code
