@@ -57,6 +57,3 @@ class LoginScript:
             return {"is_login_succeed": False, "error_message": "Element not found"}
         finally:
             self.driver.quit()
-
-    def take_screenshot(self, filename):
-        take_screenshot(self.driver, filename)

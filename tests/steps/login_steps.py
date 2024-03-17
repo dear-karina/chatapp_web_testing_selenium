@@ -4,22 +4,22 @@ from scripts.script_login import LoginScript
 
 @given('I open the login page')
 def step_open_login_page(context):
-    context.login_page = LoginScript(context.driver, "https://chatapppreview.hongduccodedao.io.vn/login")
+    context.login_script = LoginScript(context.driver, "https://chatapppreview.hongduccodedao.io.vn/login")
 
 
 @when('I enter the correct username "{username}" and password "{password}"')
 def step_enter_correct_credentials(context, username, password):
-    context.logged_in_state = context.login_page.login_positive(username, password)
+    context.logged_in_state = context.login_script.login_positive(username, password)
 
 
 @when('I enter the correct username "{username}" and incorrect password "{password}"')
 def step_enter_incorrect_password(context, username, password):
-    context.logged_in_state = context.login_page.login_negative(username, password)
+    context.logged_in_state = context.login_script.login_negative(username, password)
 
 
 @when('I enter a nonexistent username "{username}" and password "{password}"')
 def step_enter_nonexistent_username(context, username, password):
-    context.logged_in_state = context.login_page.login_negative(username, password)
+    context.logged_in_state = context.login_script.login_negative(username, password)
 
 
 @then('I should be logged in successfully')

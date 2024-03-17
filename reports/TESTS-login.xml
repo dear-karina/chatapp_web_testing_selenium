@@ -1,7 +1,7 @@
-<testsuite name="login.login on chrome" tests="3" errors="0" failures="3" skipped="0" time="9.767001" timestamp="2024-03-16T21:23:29.448150" hostname="manticminotaur"><testcase classname="login.login on chrome" name="Login with correct credentials" status="failed" time="6.376621"><failure type="AssertionError" message="Login was not successful">
+<testsuite name="login.login on chrome" tests="3" errors="0" failures="3" skipped="0" time="16.827655" timestamp="2024-03-17T10:43:52.401642" hostname="manticminotaur"><testcase classname="login.login on chrome" name="Login with correct credentials" status="failed" time="7.105203"><failure type="AssertionError" message="Login was not successful">
 <![CDATA[
 Failing step: Then I should be logged in successfully ... failed in 0.000s
-Location: ../tests/login.feature:10
+Location: tests/login.feature:10
 Assertion Failed: Login was not successful
 Captured logging:
 ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
@@ -11,18 +11,18 @@ ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
 
   @positive-case, @must-passed, @login
   Scenario: Login with correct credentials
-    Given I open the chrome browser ... passed in 0.224s
-    Given I open the login page ... passed in 0.558s
-    When I enter the correct username "hongducdev" and password "123456" ... passed in 5.594s
+    Given I open the chrome browser ... passed in 0.234s
+    Given I open the login page ... passed in 1.288s
+    When I enter the correct username "hongducdev" and password "123456" ... passed in 5.583s
     Then I should be logged in successfully ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="login.login on chrome" name="Login with incorrect password" status="failed" time="1.692417"><failure type="AssertionError" message="Expected error message: Incorrect password. Actual error message: Failed to fetch">
+</system-out></testcase><testcase classname="login.login on chrome" name="Login with incorrect password" status="failed" time="5.820833"><failure type="AssertionError" message="Expected error message: Incorrect password. Actual error message: Failed to fetch">
 <![CDATA[
 Failing step: And I should see the message "Incorrect password" ... failed in 0.000s
-Location: ../tests/login.feature:17
+Location: tests/login.feature:17
 Assertion Failed: Expected error message: Incorrect password. Actual error message: Failed to fetch]]>
 </failure><system-out>
 <![CDATA[
@@ -30,19 +30,19 @@ Assertion Failed: Expected error message: Incorrect password. Actual error messa
 
   @negative-case, @must-passed, @login
   Scenario: Login with incorrect password
-    Given I open the chrome browser ... passed in 0.223s
-    Given I open the login page ... passed in 0.439s
-    When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" ... passed in 1.030s
+    Given I open the chrome browser ... passed in 0.226s
+    Given I open the login page ... passed in 3.551s
+    When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" ... passed in 2.044s
     Then I should not be logged in ... passed in 0.000s
     And I should see the message "Incorrect password" ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="login.login on chrome" name="Login with nonexistent username" status="failed" time="1.697962"><failure type="AssertionError" message="Expected error message: Nonexistent username. Actual error message: Failed to fetch">
+</system-out></testcase><testcase classname="login.login on chrome" name="Login with nonexistent username" status="failed" time="3.901618"><failure type="AssertionError" message="Expected error message: Nonexistent username. Actual error message: Failed to fetch">
 <![CDATA[
 Failing step: And I should see the message "Nonexistent username" ... failed in 0.000s
-Location: ../tests/login.feature:24
+Location: tests/login.feature:24
 Assertion Failed: Expected error message: Nonexistent username. Actual error message: Failed to fetch]]>
 </failure><system-out>
 <![CDATA[
@@ -50,9 +50,9 @@ Assertion Failed: Expected error message: Nonexistent username. Actual error mes
 
   @negative-case, @login
   Scenario: Login with nonexistent username
-    Given I open the chrome browser ... passed in 0.222s
-    Given I open the login page ... passed in 0.493s
-    When I enter a nonexistent username "nonexistentusername" and password "123456" ... passed in 0.982s
+    Given I open the chrome browser ... passed in 0.226s
+    Given I open the login page ... passed in 2.164s
+    When I enter a nonexistent username "nonexistentusername" and password "123456" ... passed in 1.512s
     Then I should not be logged in ... passed in 0.000s
     And I should see the message "Nonexistent username" ... failed in 0.000s
 

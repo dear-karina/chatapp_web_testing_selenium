@@ -1,19 +1,72 @@
-<testsuite name="signup.signup on chrome" tests="1" errors="0" failures="1" skipped="0" time="0.223136" timestamp="2024-03-16T21:01:23.720348" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with existed username" status="failed" time="0.223136"><failure type="NoneType" message="None">
+<testsuite name="signup.signup on chrome" tests="3" errors="1" failures="2" skipped="0" time="14.062523" timestamp="2024-03-17T10:44:07.151323" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with valid credentials" status="failed" time="7.730778"><failure type="AssertionError" message="Signup was not successful. Input data: ('Julia Carlson', 'tester_1710647034', '#19YE2k3', '#19YE2k3', 'male')">
 <![CDATA[
-Failing step: Given I open the signup page ... undefined in 0.000s
-Location: ../tests/signup.feature:21
-None]]>
+Failing step: Then I should be signed up successfully ... failed in 0.000s
+Location: tests/signup.feature:10
+Assertion Failed: Signup was not successful. Input data: ('Julia Carlson', 'tester_1710647034', '#19YE2k3', '#19YE2k3', 'male')
+Captured logging:
+ERROR:scripts.script_signup:Timeout occurred while waiting for element]]>
 </failure><system-out>
 <![CDATA[
 @scenario.begin
 
-  @negative-case
+  @positive-case, @must-passed, @signup
+  Scenario: Signup with valid credentials
+    Given I open the chrome browser ... passed in 0.224s
+    Given I open the signup page ... passed in 1.440s
+    When I enter an unique fullname and an unique username and an unique password and retype it correctly ... passed in 6.067s
+    Then I should be signed up successfully ... failed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with mismatching password" status="failed" time="2.317403"><failure type="AssertionError" message="Expected error message: Passwords do not match. Actual error message: &#10;Input data: ('Nicholas Benson', 'tester_1710647042', '!0&amp;SOpdU', '12345678', 'male')">
+<![CDATA[
+Failing step: And I should see the signup message "Passwords do not match" ... failed in 0.000s
+Location: tests/signup.feature:17
+Assertion Failed: Expected error message: Passwords do not match. Actual error message: 
+Input data: ('Nicholas Benson', 'tester_1710647042', '!0&SOpdU', '12345678', 'male')]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @negative-case, @must-passed, @signup
+  Scenario: Signup with mismatching password
+    Given I open the chrome browser ... passed in 0.225s
+    Given I open the signup page ... passed in 1.283s
+    When I enter an unique fullname and an unique username and an unique password and retype it incorrectly ... passed in 0.809s
+    Then I should not be signed up ... passed in 0.000s
+    And I should see the signup message "Passwords do not match" ... failed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with existed username" status="failed" time="4.014342"><error type="AttributeError" message="'Context' object has no attribute 'logged_in_state'">
+<![CDATA[
+Failing step: Then I should not be logged in ... failed in 0.002s
+Location: tests/signup.feature:23
+Traceback (most recent call last):
+  File "/home/khavy/PycharmProjects/ChatApp_Web_Testing/.venv/lib/python3.11/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/home/khavy/PycharmProjects/ChatApp_Web_Testing/.venv/lib/python3.11/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "tests/steps/login_steps.py", line 32, in step_verify_not_logged_in
+    assert not context.logged_in_state["is_login_succeed"], "Login was unexpectedly successful"
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/khavy/PycharmProjects/ChatApp_Web_Testing/.venv/lib/python3.11/site-packages/behave/runner.py", line 321, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'logged_in_state'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @negative-case, @signup
   Scenario: Signup with existed username
-    Given I open the chrome browser ... passed in 0.223s
-    Given I open the signup page ... undefined in 0.000s
-    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... undefined in 0.000s
-    Then I should not be logged in ... skipped in 0.000s
-    And I should see the message "Existed username" ... skipped in 0.000s
+    Given I open the chrome browser ... passed in 0.226s
+    Given I open the signup page ... passed in 1.999s
+    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... passed in 1.787s
+    Then I should not be logged in ... failed in 0.002s
+    And I should see the signup message "Existed username" ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
