@@ -1,0 +1,14 @@
+
+# ChatApp Automation Testing Project
+
+This project is used for testing ChatApp from @hongducdev and his team.
+
+
+
+
+## Tech Stack
+
+**Language:** Python, Gherkin
+
+**Framework:** Flask, Behave, Selenium
+
