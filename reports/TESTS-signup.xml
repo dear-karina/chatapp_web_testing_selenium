@@ -1,48 +1,64 @@
-<testsuite name="signup.signup on chrome" tests="3" errors="1" failures="0" skipped="0" time="6.794371" timestamp="2024-03-17T11:37:56.740855" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with valid credentials" status="failed" time="6.794371"><error type="KeyboardInterrupt" message="">
+<testsuite name="signup.signup on chrome" tests="3" errors="0" failures="3" skipped="0" time="17.008928" timestamp="2024-03-22T20:49:37.513333" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with valid credentials" status="failed" time="8.191419"><failure type="AssertionError" message="Signup was not successful. Input data: ('Jennifer Russell', 'tester_1711115361', '!*4e&amp;dBd', '!*4e&amp;dBd', 'female')">
 <![CDATA[
-Failing step: When I enter an unique fullname and an unique username and an unique password and retype it correctly ... failed in 5.254s
-Location: tests/signup.feature:9
-ABORTED: By user (KeyboardInterrupt).]]>
-</error><system-out>
+Failing step: Then I should be signed up successfully ... failed in 0.001s
+Location: tests/signup.feature:10
+Assertion Failed: Signup was not successful. Input data: ('Jennifer Russell', 'tester_1711115361', '!*4e&dBd', '!*4e&dBd', 'female')
+Captured logging:
+ERROR:scripts.script_signup:Timeout occurred while waiting for element]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @positive-case, @must-passed, @signup
   Scenario: Signup with valid credentials
-    Given I open the chrome browser ... passed in 0.138s
-    Given I open the signup page ... passed in 1.402s
-    When I enter an unique fullname and an unique username and an unique password and retype it correctly ... failed in 5.254s
-    Then I should be signed up successfully ... skipped in 0.000s
+    Given I open the chrome browser ... passed in 0.508s
+    Given I open the signup page ... passed in 0.904s
+    When I enter an unique fullname and an unique username and an unique password and retype it correctly ... passed in 6.780s
+    Then I should be signed up successfully ... failed in 0.001s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with mismatching password" status="untested" time="0"><system-out>
+</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with mismatching password" status="failed" time="1.905814"><failure type="AssertionError" message="Expected error message: Passwords do not match. Actual error message: &#10;Input data: ('Megan Avila', 'tester_1711115369', ')0Zv$#uz', '12345678', 'female')">
+<![CDATA[
+Failing step: And I should see the signup message "Passwords do not match" ... failed in 0.000s
+Location: tests/signup.feature:17
+Assertion Failed: Expected error message: Passwords do not match. Actual error message: 
+Input data: ('Megan Avila', 'tester_1711115369', ')0Zv$#uz', '12345678', 'female')]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @negative-case, @must-passed, @signup
   Scenario: Signup with mismatching password
-    Given I open the chrome browser ... untested in 0.000s
-    Given I open the signup page ... untested in 0.000s
-    When I enter an unique fullname and an unique username and an unique password and retype it incorrectly ... untested in 0.000s
-    Then I should not be signed up ... untested in 0.000s
-    And I should see the signup message "Passwords do not match" ... untested in 0.000s
+    Given I open the chrome browser ... passed in 0.292s
+    Given I open the signup page ... passed in 0.651s
+    When I enter an unique fullname and an unique username and an unique password and retype it incorrectly ... passed in 0.962s
+    Then I should not be signed up ... passed in 0.000s
+    And I should see the signup message "Passwords do not match" ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with existed username" status="untested" time="0"><system-out>
+</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with existed username" status="failed" time="6.911695"><failure type="AssertionError" message="Expected error message: Existed username. Actual error message: Timeout occurred&#10;Input data: ('hongducdev', 'tester_1711115371', '$i4Jwpf2', '$i4Jwpf2', 'female')">
+<![CDATA[
+Failing step: And I should see the signup message "Existed username" ... failed in 0.000s
+Location: tests/signup.feature:24
+Assertion Failed: Expected error message: Existed username. Actual error message: Timeout occurred
+Input data: ('hongducdev', 'tester_1711115371', '$i4Jwpf2', '$i4Jwpf2', 'female')
+Captured logging:
+ERROR:scripts.script_signup:Timeout occurred while waiting for element]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @negative-case, @signup
   Scenario: Signup with existed username
-    Given I open the chrome browser ... untested in 0.000s
-    Given I open the signup page ... untested in 0.000s
-    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... untested in 0.000s
-    Then I should not be signed up ... untested in 0.000s
-    And I should see the signup message "Existed username" ... untested in 0.000s
+    Given I open the chrome browser ... passed in 0.247s
+    Given I open the signup page ... passed in 0.693s
+    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... passed in 5.970s
+    Then I should not be signed up ... passed in 0.000s
+    And I should see the signup message "Existed username" ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-<testsuite name="login.login on chrome" tests="3" errors="0" failures="3" skipped="0" time="20.770194" timestamp="2024-03-17T11:37:49.811627" hostname="manticminotaur"><testcase classname="login.login on chrome" name="Login with correct credentials" status="failed" time="6.842599"><failure type="AssertionError" message="Login was not successful">
+<testsuite name="login.login on chrome" tests="3" errors="0" failures="3" skipped="0" time="22.728881" timestamp="2024-03-22T20:49:19.643783" hostname="manticminotaur"><testcase classname="login.login on chrome" name="Login with correct credentials" status="failed" time="9.327382"><failure type="AssertionError" message="Login was not successful">
 <![CDATA[
 Failing step: Then I should be logged in successfully ... failed in 0.000s
 Location: tests/login.feature:10
@@ -11,15 +11,15 @@ ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
 
   @positive-case, @must-passed, @login
   Scenario: Login with correct credentials
-    Given I open the chrome browser ... passed in 0.137s
-    Given I open the login page ... passed in 1.391s
-    When I enter the correct username "hongducdev" and password "123456" ... passed in 5.315s
+    Given I open the chrome browser ... passed in 1.685s
+    Given I open the login page ... passed in 2.059s
+    When I enter the correct username "hongducdev" and password "123456" ... passed in 5.583s
     Then I should be logged in successfully ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="login.login on chrome" name="Login with incorrect password" status="failed" time="7.160829"><failure type="AssertionError" message="Expected error message: Incorrect password. Actual error message: Timeout occurred">
+</system-out></testcase><testcase classname="login.login on chrome" name="Login with incorrect password" status="failed" time="6.591178"><failure type="AssertionError" message="Expected error message: Incorrect password. Actual error message: Timeout occurred">
 <![CDATA[
 Failing step: And I should see the message "Incorrect password" ... failed in 0.000s
 Location: tests/login.feature:17
@@ -32,16 +32,16 @@ ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
 
   @negative-case, @must-passed, @login
   Scenario: Login with incorrect password
-    Given I open the chrome browser ... passed in 0.144s
-    Given I open the login page ... passed in 1.627s
-    When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" ... passed in 5.389s
+    Given I open the chrome browser ... passed in 0.270s
+    Given I open the login page ... passed in 0.661s
+    When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" ... passed in 5.659s
     Then I should not be logged in ... passed in 0.000s
     And I should see the message "Incorrect password" ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="login.login on chrome" name="Login with nonexistent username" status="failed" time="6.766766"><failure type="AssertionError" message="Expected error message: Nonexistent username. Actual error message: Timeout occurred">
+</system-out></testcase><testcase classname="login.login on chrome" name="Login with nonexistent username" status="failed" time="6.81032"><failure type="AssertionError" message="Expected error message: Nonexistent username. Actual error message: Timeout occurred">
 <![CDATA[
 Failing step: And I should see the message "Nonexistent username" ... failed in 0.000s
 Location: tests/login.feature:24
@@ -54,9 +54,9 @@ ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
 
   @negative-case, @login
   Scenario: Login with nonexistent username
-    Given I open the chrome browser ... passed in 0.148s
-    Given I open the login page ... passed in 1.247s
-    When I enter a nonexistent username "nonexistentusername" and password "123456" ... passed in 5.372s
+    Given I open the chrome browser ... passed in 0.330s
+    Given I open the login page ... passed in 0.742s
+    When I enter a nonexistent username "nonexistentusername" and password "123456" ... passed in 5.738s
     Then I should not be logged in ... passed in 0.000s
     And I should see the message "Nonexistent username" ... failed in 0.000s
 

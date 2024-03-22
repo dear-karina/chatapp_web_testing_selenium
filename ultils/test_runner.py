@@ -5,6 +5,7 @@ from ultils.result_summarize import ResultSummary
 class TestRunner:
     @staticmethod
     def run():
+        print("Start testing...")
         # run function: login
         login_suite = TestSuite(
             "login", "tests")
