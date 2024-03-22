@@ -6,17 +6,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def serve_index():
-    return send_file('reports/index.html')
+    return send_file('index.html')
 
 
 @app.route('/TESTS-login.xml')
 def serve_login_report():
-    return send_file('reports/TESTS-login.xml', mimetype='application/xml')
+    return send_file('TESTS-login.xml', mimetype='application/xml')
 
 
 @app.route('/TESTS-signup.xml')
 def serve_signup_report():
-    return send_file('reports/TESTS-signup.xml', mimetype='application/xml')
+    return send_file('TESTS-signup.xml', mimetype='application/xml')
 
 
 if __name__ == "__main__":

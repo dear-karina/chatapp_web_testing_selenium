@@ -16,8 +16,8 @@ case "$1" in
         git pull
         source .venv/bin/activate
         .venv/bin/pip3 install -r requirements.txt
-        python3 reports/flask_run.py
         echo "TestMachine2 finished updating"
+        python3 reports/flask_run.py
         ;;
     "connect")
         # test ssh connection
