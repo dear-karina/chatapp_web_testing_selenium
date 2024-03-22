@@ -27,7 +27,7 @@ case "$1" in
         echo "Running flask..."
         cd /home/ubuntu/repo/ChatApp_Web_Testing
         source .venv/bin/activate
-        python3 reports/flask_run.py
+        nohup python3 reports/flask_run.py &
         ;;
     *)
         echo "Unknown command: $1"
