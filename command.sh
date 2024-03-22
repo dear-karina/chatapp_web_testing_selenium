@@ -7,7 +7,7 @@ case "$1" in
         cd /home/ubuntu/repo/ChatApp_Web_Testing
         source .venv/bin/activate
         python3 main.py
-        python3 reports/flask_run.py
+        deactivate
         ;;
     "update")
         # update the automation code
@@ -17,11 +17,17 @@ case "$1" in
         source .venv/bin/activate
         .venv/bin/pip3 install -r requirements.txt
         echo "TestMachine2 finished updating"
-        python3 reports/flask_run.py
         ;;
     "connect")
         # test ssh connection
         echo "TestMachine2 connecting..."
+        ;;
+    "flask")
+        # run flask
+        echo "Running flask..."
+        cd /home/ubuntu/repo/ChatApp_Web_Testing
+        source .venv/bin/activate
+        python3 reports/flask_run.py
         ;;
     *)
         echo "Unknown command: $1"
