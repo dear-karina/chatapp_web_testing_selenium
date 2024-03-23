@@ -1,8 +1,8 @@
-<testsuite name="signup.signup on chrome" tests="3" errors="0" failures="3" skipped="0" time="17.008928" timestamp="2024-03-22T20:49:37.513333" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with valid credentials" status="failed" time="8.191419"><failure type="AssertionError" message="Signup was not successful. Input data: ('Jennifer Russell', 'tester_1711115361', '!*4e&amp;dBd', '!*4e&amp;dBd', 'female')">
+<testsuite name="signup.signup on chrome" tests="3" errors="0" failures="3" skipped="0" time="17.090835" timestamp="2024-03-24T00:32:33.592921" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with valid credentials" status="failed" time="5.665999"><failure type="AssertionError" message="Signup was not successful. Input data: ('John Edwards', 'tester_1711215136', 'lI^0F7ii', 'lI^0F7ii', 'female')">
 <![CDATA[
-Failing step: Then I should be signed up successfully ... failed in 0.001s
+Failing step: Then I should be signed up successfully ... failed in 0.000s
 Location: tests/signup.feature:10
-Assertion Failed: Signup was not successful. Input data: ('Jennifer Russell', 'tester_1711115361', '!*4e&dBd', '!*4e&dBd', 'female')
+Assertion Failed: Signup was not successful. Input data: ('John Edwards', 'tester_1711215136', 'lI^0F7ii', 'lI^0F7ii', 'female')
 Captured logging:
 ERROR:scripts.script_signup:Timeout occurred while waiting for element]]>
 </failure><system-out>
@@ -11,41 +11,43 @@ ERROR:scripts.script_signup:Timeout occurred while waiting for element]]>
 
   @positive-case, @must-passed, @signup
   Scenario: Signup with valid credentials
-    Given I open the chrome browser ... passed in 0.508s
-    Given I open the signup page ... passed in 0.904s
-    When I enter an unique fullname and an unique username and an unique password and retype it correctly ... passed in 6.780s
-    Then I should be signed up successfully ... failed in 0.001s
+    Given I open the chrome browser ... passed in 0.106s
+    Given I open the signup page ... passed in 0.342s
+    When I enter an unique fullname and an unique username and an unique password and retype it correctly ... passed in 5.218s
+    Then I should be signed up successfully ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with mismatching password" status="failed" time="1.905814"><failure type="AssertionError" message="Expected error message: Passwords do not match. Actual error message: &#10;Input data: ('Megan Avila', 'tester_1711115369', ')0Zv$#uz', '12345678', 'female')">
+</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with mismatching password" status="failed" time="5.71525"><failure type="AssertionError" message="Expected error message: Passwords do not match. Actual error message: Timeout occurred&#10;Input data: ('Samantha Kim', 'tester_1711215142', 'skn#B7Aa', '12345678', 'male')">
 <![CDATA[
 Failing step: And I should see the signup message "Passwords do not match" ... failed in 0.000s
 Location: tests/signup.feature:17
-Assertion Failed: Expected error message: Passwords do not match. Actual error message: 
-Input data: ('Megan Avila', 'tester_1711115369', ')0Zv$#uz', '12345678', 'female')]]>
+Assertion Failed: Expected error message: Passwords do not match. Actual error message: Timeout occurred
+Input data: ('Samantha Kim', 'tester_1711215142', 'skn#B7Aa', '12345678', 'male')
+Captured logging:
+ERROR:scripts.script_signup:Timeout occurred while waiting for element]]>
 </failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @negative-case, @must-passed, @signup
   Scenario: Signup with mismatching password
-    Given I open the chrome browser ... passed in 0.292s
-    Given I open the signup page ... passed in 0.651s
-    When I enter an unique fullname and an unique username and an unique password and retype it incorrectly ... passed in 0.962s
+    Given I open the chrome browser ... passed in 0.163s
+    Given I open the signup page ... passed in 0.384s
+    When I enter an unique fullname and an unique username and an unique password and retype it incorrectly ... passed in 5.168s
     Then I should not be signed up ... passed in 0.000s
     And I should see the signup message "Passwords do not match" ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with existed username" status="failed" time="6.911695"><failure type="AssertionError" message="Expected error message: Existed username. Actual error message: Timeout occurred&#10;Input data: ('hongducdev', 'tester_1711115371', '$i4Jwpf2', '$i4Jwpf2', 'female')">
+</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with existed username" status="failed" time="5.709586"><failure type="AssertionError" message="Expected error message: Existed username. Actual error message: Timeout occurred&#10;Input data: ('hongducdev', 'tester_1711215148', '#3eAITcY', '#3eAITcY', 'female')">
 <![CDATA[
 Failing step: And I should see the signup message "Existed username" ... failed in 0.000s
 Location: tests/signup.feature:24
 Assertion Failed: Expected error message: Existed username. Actual error message: Timeout occurred
-Input data: ('hongducdev', 'tester_1711115371', '$i4Jwpf2', '$i4Jwpf2', 'female')
+Input data: ('hongducdev', 'tester_1711215148', '#3eAITcY', '#3eAITcY', 'female')
 Captured logging:
 ERROR:scripts.script_signup:Timeout occurred while waiting for element]]>
 </failure><system-out>
@@ -54,9 +56,9 @@ ERROR:scripts.script_signup:Timeout occurred while waiting for element]]>
 
   @negative-case, @signup
   Scenario: Signup with existed username
-    Given I open the chrome browser ... passed in 0.247s
-    Given I open the signup page ... passed in 0.693s
-    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... passed in 5.970s
+    Given I open the chrome browser ... passed in 0.164s
+    Given I open the signup page ... passed in 0.348s
+    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... passed in 5.197s
     Then I should not be signed up ... passed in 0.000s
     And I should see the signup message "Existed username" ... failed in 0.000s
 

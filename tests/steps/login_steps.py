@@ -4,7 +4,7 @@ from scripts.script_login import LoginScript
 
 @given('I open the login page')
 def step_open_login_page(context):
-    context.login_script = LoginScript(context.driver, "https://chatapppreview.hongduccodedao.io.vn/login")
+    context.login_script = LoginScript(context.driver, "https://chatapppreview.hongduccodedao.id.vn/login")
 
 
 @when('I enter the correct username "{username}" and password "{password}"')

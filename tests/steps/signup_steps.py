@@ -6,7 +6,7 @@ from ultils.data_generator import DataGenerator
 @given('I open the signup page')
 def step_open_signup_page(context):
     context.signup_script = SignupScript(
-        context.driver, "https://chatapppreview.hongduccodedao.io.vn/signup")
+        context.driver, "https://chatapppreview.hongduccodedao.id.vn/signup")
 
 
 @when('I enter an unique fullname and an unique username and an unique password and retype it correctly')
