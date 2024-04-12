@@ -6,12 +6,14 @@ Feature: login on chrome
   @positive-case, @must-passed, @login
   Scenario: Login with correct credentials
     Given I open the login page
+    Then the page URL should be displayed correctly
     When I enter the correct username "hongducdev" and password "123456"
     Then I should be logged in successfully
 
   @negative-case, @must-passed, @login
   Scenario: Login with incorrect password
     Given I open the login page
+    Then the page URL should be displayed correctly
     When I enter the correct username "hongducdev" and incorrect password "incorrectpassword"
     Then I should not be logged in
     And I should see the message "Incorrect password"
@@ -19,6 +21,7 @@ Feature: login on chrome
   @negative-case, @login
   Scenario: Login with nonexistent username
     Given I open the login page
+    Then the page URL should be displayed correctly
     When I enter a nonexistent username "nonexistentusername" and password "123456"
     Then I should not be logged in
     And I should see the message "Nonexistent username"
