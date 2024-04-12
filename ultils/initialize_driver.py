@@ -21,29 +21,6 @@ def initialize_driver(driver: str = "chrome"):
         # cdriver = webdriver.Chrome(options=options, service=service)
         cdriver = webdriver.Chrome(options=options)
         return cdriver
-    elif driver.lower() == "firefox":
-        options = Options()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--headless")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--enable-automation")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--remote-debugging-port=9222")
-
-        # Set the path to the Firefox binary if necessary
-        firefox_binary_path = r'/usr/bin/firefox'
-        options.binary_location = firefox_binary_path
-
-        # Specify the path to the geckodriver executable
-        driver_path = r'/usr/local/bin/geckodriver'
-
-        # Create a service object for geckodriver
-        service = Service(driver_path)
-
-        # Initialize the Firefox driver with the specified options and service
-        driver = webdriver.Firefox(options=options, service=service)
-
-        return driver
     else:
         print("Unsupported driver")
         return None
