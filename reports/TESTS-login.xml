@@ -1,4 +1,4 @@
-<testsuite name="login.login on chrome" tests="3" errors="0" failures="3" skipped="0" time="18.267843" timestamp="2024-03-24T00:32:16.195336" hostname="manticminotaur"><testcase classname="login.login on chrome" name="Login with correct credentials" status="failed" time="6.773106"><failure type="AssertionError" message="Login was not successful">
+<testsuite name="login.login on chrome" tests="3" errors="1" failures="1" skipped="0" time="11.917868" timestamp="2024-03-25T20:50:46.446370" hostname="manticminotaur"><testcase classname="login.login on chrome" name="Login with correct credentials" status="failed" time="9.04901"><failure type="AssertionError" message="Login was not successful">
 <![CDATA[
 Failing step: Then I should be logged in successfully ... failed in 0.000s
 Location: tests/login.feature:10
@@ -11,54 +11,49 @@ ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
 
   @positive-case, @must-passed, @login
   Scenario: Login with correct credentials
-    Given I open the chrome browser ... passed in 1.212s
-    Given I open the login page ... passed in 0.383s
-    When I enter the correct username "hongducdev" and password "123456" ... passed in 5.177s
+    Given I open the chrome browser ... passed in 3.172s
+    Given I open the login page ... passed in 0.675s
+    When I enter the correct username "hongducdev" and password "123456" ... passed in 5.202s
     Then I should be logged in successfully ... failed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="login.login on chrome" name="Login with incorrect password" status="failed" time="5.763281"><failure type="AssertionError" message="Expected error message: Incorrect password. Actual error message: Timeout occurred">
+</system-out></testcase><testcase classname="login.login on chrome" name="Login with incorrect password" status="failed" time="2.868858"><error type="KeyboardInterrupt" message="">
 <![CDATA[
-Failing step: And I should see the message "Incorrect password" ... failed in 0.000s
-Location: tests/login.feature:17
-Assertion Failed: Expected error message: Incorrect password. Actual error message: Timeout occurred
+Failing step: When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" ... failed in 1.012s
+Location: tests/login.feature:15
+ABORTED: By user (KeyboardInterrupt).
 Captured logging:
-ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
-</failure><system-out>
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(104, 'Connection reset by peer')': /session/e1965e1fb7bb1ddca38be1dd893060a1
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7031227490d0>: Failed to establish a new connection: [Errno 111] Connection refused')': /session/e1965e1fb7bb1ddca38be1dd893060a1
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x703122749510>: Failed to establish a new connection: [Errno 111] Connection refused')': /session/e1965e1fb7bb1ddca38be1dd893060a1]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @negative-case, @must-passed, @login
   Scenario: Login with incorrect password
-    Given I open the chrome browser ... passed in 0.119s
-    Given I open the login page ... passed in 0.380s
-    When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" ... passed in 5.264s
-    Then I should not be logged in ... passed in 0.000s
-    And I should see the message "Incorrect password" ... failed in 0.000s
+    Given I open the chrome browser ... passed in 1.292s
+    Given I open the login page ... passed in 0.565s
+    When I enter the correct username "hongducdev" and incorrect password "incorrectpassword" ... failed in 1.012s
+    Then I should not be logged in ... skipped in 0.000s
+    And I should see the message "Incorrect password" ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="login.login on chrome" name="Login with nonexistent username" status="failed" time="5.731456"><failure type="AssertionError" message="Expected error message: Nonexistent username. Actual error message: Timeout occurred">
-<![CDATA[
-Failing step: And I should see the message "Nonexistent username" ... failed in 0.000s
-Location: tests/login.feature:24
-Assertion Failed: Expected error message: Nonexistent username. Actual error message: Timeout occurred
-Captured logging:
-ERROR:scripts.script_login:Timeout occurred while waiting for element]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="login.login on chrome" name="Login with nonexistent username" status="untested" time="0"><system-out>
 <![CDATA[
 @scenario.begin
 
   @negative-case, @login
   Scenario: Login with nonexistent username
-    Given I open the chrome browser ... passed in 0.119s
-    Given I open the login page ... passed in 0.361s
-    When I enter a nonexistent username "nonexistentusername" and password "123456" ... passed in 5.252s
-    Then I should not be logged in ... passed in 0.000s
-    And I should see the message "Nonexistent username" ... failed in 0.000s
+    Given I open the chrome browser ... untested in 0.000s
+    Given I open the login page ... untested in 0.000s
+    When I enter a nonexistent username "nonexistentusername" and password "123456" ... untested in 0.000s
+    Then I should not be logged in ... untested in 0.000s
+    And I should see the message "Nonexistent username" ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

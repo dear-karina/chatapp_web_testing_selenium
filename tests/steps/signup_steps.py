@@ -16,7 +16,8 @@ def step_enter_valid_credentials(context):
     password = DataGenerator.generate_password(8)
     gender = DataGenerator.choose_random(("male", "female"))
     context.positive_data = (fullname, username, password, password, gender)
-    context.signup_state = context.signup_script.signup_positive(fullname, username, password, password, gender)
+    context.signup_state = context.signup_script.signup_positive(
+        fullname, username, password, password, gender)
 
 
 @when('I enter an unique fullname and an unique username and an unique password and retype it incorrectly')
@@ -26,7 +27,8 @@ def step_enter_mismatching_password(context):
     password = DataGenerator.generate_password(8)
     gender = DataGenerator.choose_random(("male", "female"))
     context.negative_data = (fullname, username, password, "12345678", gender)
-    context.signup_state = context.signup_script.signup_negative(fullname, username, password, "12345678", gender)
+    context.signup_state = context.signup_script.signup_negative(
+        fullname, username, password, "12345678", gender)
 
 
 @when('I enter an unique fullname and an existed username and an unique password and retype it correctly')
@@ -36,7 +38,8 @@ def step_enter_existing_username(context):
     password = DataGenerator.generate_password(8)
     gender = DataGenerator.choose_random(("male", "female"))
     context.negative_data = (fullname, username, password, password, gender)
-    context.signup_state = context.signup_script.signup_negative(fullname, username, password, password, gender)
+    context.signup_state = context.signup_script.signup_negative(
+        fullname, username, password, password, gender)
 
 
 @then('I should be signed up successfully')
