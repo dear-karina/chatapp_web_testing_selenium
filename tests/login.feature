@@ -14,11 +14,11 @@ Feature: login on chrome
     Given I open the login page
     When I enter the correct username "hongducdev" and incorrect password "incorrectpassword"
     Then I should not be logged in
-    And I should see the message "Incorrect password"
+    And I should see the message "Password is incorrect"
 
   @negative-case, @login
   Scenario: Login with nonexistent username
     Given I open the login page
     When I enter a nonexistent username "nonexistentusername" and password "123456"
     Then I should not be logged in
-    And I should see the message "Nonexistent username"
+    And I should see the message "Account does not exist"

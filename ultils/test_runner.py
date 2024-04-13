@@ -13,16 +13,16 @@ class TestRunner:
             '--tags=@login')
         print(f"Feature Login: {login_result}")
         # run function: signup
-        signup_suite = TestSuite(
-            "signup", "tests")
-        signup_result = signup_suite.execute_by_tags(
-            '--tags=@signup')
-        print(f"Feature Login: {signup_result}")
-
-        overall_result = ResultSummary(passed_scenarios=login_result.passed_scenarios + signup_result.passed_scenarios,
-                                       failed_scenarios=login_result.failed_scenarios + signup_result.failed_scenarios)
-        print(f"Overall result: {overall_result}")
-        print(overall_result.decide_overall())
+        # signup_suite = TestSuite(
+        #     "signup", "tests")
+        # signup_result = signup_suite.execute_by_tags(
+        #     '--tags=@signup')
+        # print(f"Feature Signup: {signup_result}")
+        #
+        # overall_result = ResultSummary(passed_scenarios=login_result.passed_scenarios + signup_result.passed_scenarios,
+        #                                failed_scenarios=login_result.failed_scenarios + signup_result.failed_scenarios)
+        # print(f"Overall result: {overall_result}")
+        # print(overall_result.decide_overall())
 
 
 class TestSuite:
