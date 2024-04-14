@@ -12,10 +12,11 @@ class ResultSummary:
 
     @classmethod
     def get_result_summary(cls, data_str: str):
+        print(data_str)
         patterns = {
             'time': r'Took (\S+)s',
             'failed_scenario_names': r'Failing scenarios:\n(.*?)(?:\n\n|$)',
-            'summary': r'(\d+) scenarios passed, (\d+) failed, (\d+) skipped'
+            'summary': r'(\d+) (?:scenarios|scenario) passed, (\d+) failed, (\d+) skipped'
         }
         results = {}
         for key, pattern in patterns.items():
