@@ -21,4 +21,4 @@ Feature: signup on chrome
     Given I open the signup page
     When I enter an unique fullname and an existed username and an unique password and retype it correctly
     Then I should not be signed up
-    And I should see the signup message "Existed username"
+    And I should see the signup message "Username already exists"

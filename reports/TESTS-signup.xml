@@ -1,43 +1,43 @@
-<testsuite name="signup.signup on chrome" tests="3" errors="0" failures="0" skipped="0" time="0.0" timestamp="2024-03-25T20:50:46.448769" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with valid credentials" status="untested" time="0"><system-out>
+<testsuite name="signup.signup on chrome" tests="3" errors="0" failures="0" skipped="0" time="10.138632" timestamp="2024-04-14T10:50:46.883497" hostname="manticminotaur"><testcase classname="signup.signup on chrome" name="Signup with valid credentials" status="passed" time="3.456646"><system-out>
 <![CDATA[
 @scenario.begin
 
   @positive-case, @must-passed, @signup
   Scenario: Signup with valid credentials
-    Given I open the chrome browser ... untested in 0.000s
-    Given I open the signup page ... untested in 0.000s
-    When I enter an unique fullname and an unique username and an unique password and retype it correctly ... untested in 0.000s
-    Then I should be signed up successfully ... untested in 0.000s
+    Given I open the chrome browser ... passed in 1.040s
+    Given I open the signup page ... passed in 0.410s
+    When I enter an unique fullname and an unique username and an unique password and retype it correctly ... passed in 2.006s
+    Then I should be signed up successfully ... passed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with mismatching password" status="untested" time="0"><system-out>
+</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with mismatching password" status="passed" time="3.2944"><system-out>
 <![CDATA[
 @scenario.begin
 
   @negative-case, @must-passed, @signup
   Scenario: Signup with mismatching password
-    Given I open the chrome browser ... untested in 0.000s
-    Given I open the signup page ... untested in 0.000s
-    When I enter an unique fullname and an unique username and an unique password and retype it incorrectly ... untested in 0.000s
-    Then I should not be signed up ... untested in 0.000s
-    And I should see the signup message "Passwords do not match" ... untested in 0.000s
+    Given I open the chrome browser ... passed in 1.225s
+    Given I open the signup page ... passed in 0.408s
+    When I enter an unique fullname and an unique username and an unique password and retype it incorrectly ... passed in 1.661s
+    Then I should not be signed up ... passed in 0.000s
+    And I should see the signup message "Passwords do not match" ... passed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with existed username" status="untested" time="0"><system-out>
+</system-out></testcase><testcase classname="signup.signup on chrome" name="Signup with existed username" status="passed" time="3.387586"><system-out>
 <![CDATA[
 @scenario.begin
 
   @negative-case, @signup
   Scenario: Signup with existed username
-    Given I open the chrome browser ... untested in 0.000s
-    Given I open the signup page ... untested in 0.000s
-    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... untested in 0.000s
-    Then I should not be signed up ... untested in 0.000s
-    And I should see the signup message "Existed username" ... untested in 0.000s
+    Given I open the chrome browser ... passed in 1.082s
+    Given I open the signup page ... passed in 0.414s
+    When I enter an unique fullname and an existed username and an unique password and retype it correctly ... passed in 1.892s
+    Then I should not be signed up ... passed in 0.000s
+    And I should see the signup message "Username already exists" ... passed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
